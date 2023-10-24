@@ -40,8 +40,8 @@ export const Calculator = () => {
     const convertirDivisas = () => {    
         const tasasDeCambio = {
             MXN: {
-              USD: 0.07, 
-              EUR: 0.04,
+              USD: 0.055, 
+              EUR: 0.052,
               BTC: 0.0000016, 
               ETH: 0.0001, 
               DOGE: 0.5, 
