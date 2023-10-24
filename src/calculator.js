@@ -5,7 +5,8 @@ export const Calculator = () => {
     const [divisa2, setDivisa2] = useState('')
     const [conversion, setConversion] = useState('')
     const [cantidad1, setCantidad1] = useState('')
-    const [cantidad2, setCantidad2] = useState('')
+    const cantidad = 0
+
 
     // const onChangeUser = (e) => {
     //     setUser(e.target.value)
@@ -19,10 +20,6 @@ export const Calculator = () => {
     
         if(e.target.name === 'divisa1'){
             setCantidad1(e.target.value)
-            
-        }else if(e.target.name === 'divisa2'){
-            setCantidad2(e.target.value)
-            
         }
         console.log("Afuera del if")
     }
@@ -40,8 +37,7 @@ export const Calculator = () => {
     }
 
 
-    const convertirDivisas = () => {
-    
+    const convertirDivisas = () => {    
         const tasasDeCambio = {
             MXN: {
               USD: 0.05, 
@@ -85,16 +81,30 @@ export const Calculator = () => {
               BTC: 0.00002, 
               ETH: 0.0002, 
             },
-          }}
+          }
+          const tasaDeCambio = tasasDeCambio[divisa1][divisa2];
+          const resultado = cantidad1 * tasaDeCambio;
+          setConversion(resultado);
+        }
           
 
 
   return (
     <>
     <form action=''>
-        <p>Conversion: {cantidad1}</p>
+        <p>Conversion: {conversion}</p>
+        <p>Cantidad: {cantidad1}</p>
         <div>
-            <label htmlFor='tipo1'>Divisa 1</label>
+            
+            <input type="number" name='divisa1' id='div1' 
+            value={cantidad1} 
+            
+            onChange={onChange}>
+
+            </input>
+        </div>
+        <div>
+        <label htmlFor='tipo1'>Divisa 1</label>
             <select value={divisa1} name='divisa1' onChange={OnChangeDivisa}>
             <option value="MXN">MXN</option>
             <option value="USD">USD</option>
@@ -103,12 +113,6 @@ export const Calculator = () => {
             <option value="ETH">ETH</option>
             <option value="DOGE">DOGE</option>
             </select>
-            <input type="number" name='divisa1' id='div1' 
-            value={divisa1} 
-            
-            onChange={onChange}>
-
-            </input>
         </div>
         <div>
             <label htmlFor='tipo2'>Divisa 2</label>
@@ -120,17 +124,13 @@ export const Calculator = () => {
             <option value="ETH">ETH</option>
             <option value="DOGE">DOGE</option>
             </select>
-            <input type="number" name='divisa2' id='div2'
-            value={divisa2}
-            onChange={onChange}
-            ></input>
 
     
 
         </div>
         
 
-        <button type='OnClick'>Convertir</button>
+        <button type='button' onClick={convertirDivisas}>Convertir</button>
     </form>
     </>
   )
