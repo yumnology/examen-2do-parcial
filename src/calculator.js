@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react'
 
 export const Calculator = () => {
-    const [divisa1, setDivisa1] = useState('')
-    const [divisa2, setDivisa2] = useState('')
+    const [divisa1, setDivisa1] = useState('MXN')
+    const [divisa2, setDivisa2] = useState('MXN')
     const [conversion, setConversion] = useState('')
     const [cantidad1, setCantidad1] = useState('')
     const cantidad = 0
@@ -40,46 +40,46 @@ export const Calculator = () => {
     const convertirDivisas = () => {    
         const tasasDeCambio = {
             MXN: {
-              USD: 0.05, 
+              USD: 0.07, 
               EUR: 0.04,
-              BTC: 0.000001, 
+              BTC: 0.0000016, 
               ETH: 0.0001, 
               DOGE: 0.5, 
             },
             USD: {
-              MXN: 20, 
+              MXN: 18, 
               EUR: 0.85,
-              BTC: 20000, 
-              ETH: 2000, 
-              DOGE: 10000, 
+              BTC: 0.000030, 
+              ETH: 0.00056, 
+              DOGE: 15.18, 
             },
             EUR: {
               MXN: 25, 
               USD: 1.18,
-              BTC: 25000, 
-              ETH: 2500, 
-              DOGE: 12500, 
+              BTC: 0.000031, 
+              ETH: 0.00060, 
+              DOGE: 16.07, 
             },
             BTC: {
               MXN: 1000000, 
               USD: 0.00005, 
               EUR: 0.00004, 
-              ETH: 100, 
-              DOGE: 50000, 
+              ETH: 19.09, 
+              DOGE: 512935.65, 
             },
             ETH: {
               MXN: 10000, 
               USD: 0.0005, 
               EUR: 0.0004, 
               BTC: 0.01, 
-              DOGE: 5000, 
+              DOGE: 28981.43, 
             },
             DOGE: {
               MXN: 2, 
               USD: 0.0001, 
               EUR: 0.00008, 
               BTC: 0.00002, 
-              ETH: 0.0002, 
+              ETH: 0.000037, 
             },
           }
           const tasaDeCambio = tasasDeCambio[divisa1][divisa2];
